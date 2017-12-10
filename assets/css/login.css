@@ -1,0 +1,26 @@
+@import url(bootstrap.css);
+@import url(bootstrap-theme.css);
+
+/* ============ FIXED PATTERNS ============ */
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #CCC;
+}
+
+/* ============ LOGIN ============ */
+
+.login {
+	width: 500px;
+	margin: auto;
+	margin-top: 50px;
+	background-color: #FFF;
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 20px;
+}
+
+#warning {
+	display: none;
+}

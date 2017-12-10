@@ -7,18 +7,22 @@
 	global $config;
 	$config = array();
 	if(ENVIRONMENT == 'development') {
-		define('BASE_URL', 'http://localhost/');
+		define('BASE_URL', 'http://localhost/ppramos-ce');
 		$config['environment'] = ENVIRONMENT;
-		$config['dbname'] = '';
+		$config['dbname'] = 'ppramos-ce';
 		$config['host'] = 'localhost';
 		$config['dbuser'] = 'root';
 		$config['dbpass'] = '';
 	} else {
-		define('BASE_URL', 'http://www.');
+		define('BASE_URL', 'http://localhost:8888/ppramos-ce');
 		$config['environment'] = ENVIRONMENT;
-		$config['dbname'] = 'pprarj';
+		/*$config['dbname'] = 'pprarj';
 		$config['host'] = 'localhost';
 		$config['dbuser'] = 'pprarjbd';
-		$config['dbpass'] = 'SegReqNao01';
+		$config['dbpass'] = 'SegReqNao01';*/
+		$config['dbname'] = 'ppramos-ce';
+		$config['host'] = 'localhost';
+		$config['dbuser'] = 'root';
+		$config['dbpass'] = '';
 	}
 ?>

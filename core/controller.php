@@ -14,7 +14,7 @@
 		}
 
 		public function loadTemplate($viewName, $viewData = array()) {
-			include 'views/template.php';
+			include 'views/default.php';
 		}
 
 		public function loadViewInTemplate($viewName, $viewData) {
