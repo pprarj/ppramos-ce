@@ -6,4 +6,68 @@
 body {
 	margin: 0px;
 	padding: 0px;
+	background-color: #EEE;
+}
+
+/* ============ TOP ============ */
+
+.top-line {
+	min-height: 10px;
+	background-color: #002898;
+}
+
+.top {
+	text-align: right;
+	padding: 10px 10px 10px 0px;
+	border-bottom: 1px solid #DDD;
+}
+
+.top a {
+	text-decoration: none;
+}
+
+.top a:hover {
+	color: #F00;
+}
+
+/* ============ MID ============ */
+
+.main {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+/* ====== MENU ====== */
+
+.menu {
+	background-color: #CCC;
+	width: 15%;
+	border-bottom-right-radius: 10px;
+	padding-bottom: 10px;
+}
+
+.menu ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.menu li {
+	padding: 10px 15px 10px 15px;
+}
+
+.menu li:hover {
+	background-color: #AAA;
+}
+
+.menu a {
+	color: #002898;
+	text-decoration: none;
+}
+
+/* ====== CONTENT ====== */
+
+.content {
+	padding: 10px;
+	width: 85%;
 }

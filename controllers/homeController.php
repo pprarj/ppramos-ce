@@ -12,6 +12,11 @@
 		public function index() {
 			$dados = array();
 			
+			$user = new users();
+			$user->setUser();
+
+			$dados['user'] = $user->getUser();
+			
 			$this->loadTemplate('home', $dados);
 		}
 	}
