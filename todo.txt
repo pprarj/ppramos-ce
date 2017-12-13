@@ -17,3 +17,24 @@ Veja como o código é composto. Ele apresenta 13 dígitos que correspondem a qu
 * Código do produto: os próximos 5 dígitos;
 
 * Dígito de controle: o último dígito.
+
+*************
+BANCO DE DADOS
+*************
+
+Produtos:
+- ID (Chave primária)
+- Nome do produto
+- Quantidade em estoque
+- Categoria
+- Código de barras
+- Data da compra
+
+Categoria:
+- ID
+- Nome da Categoria
+
+Usuarios:
+- ID
+- Nome
+- Senha
