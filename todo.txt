@@ -1,0 +1,19 @@
+ O Padrão de Codigo de barras mais utilizado em produtos de supermercado é o Padrão EAN13
+
+ 
+
+Este padrão EAN13 serve para utilizar em embalagens de produtos comerciais. Atualmente este padrão é utilizado por mais de 80 países em todo o mundo.
+
+ 
+
+Veja como o código é composto. Ele apresenta 13 dígitos que correspondem a quatro informações. São elas:
+
+ 
+
+* Prefixo do país: os primeiros 3 dígitos;
+
+* Código do fabricante: os próximos 4 dígitos;
+
+* Código do produto: os próximos 5 dígitos;
+
+* Dígito de controle: o último dígito.
