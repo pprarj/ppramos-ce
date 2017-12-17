@@ -20,6 +20,17 @@
 			$this->loadTemplate('products_register', $data);
 		}
 		
+		public function roster() {
+			$data = array();
+			
+			$user = new users();
+			$user->setUser();
+
+			$data['user'] = $user->getUser();
+			
+			$this->loadTemplate('products_list', $data);
+		}
+		
 		public function add() {
 			header('Content-type: text/json; charset=utf-8');
 			
@@ -29,10 +40,12 @@
 				$array['product_name'] = addslashes($_POST['product_name']);
 				$array['category'] = $_POST['category'];
 				$array['quantity'] = addslashes($_POST['stock_quantity']);
-				$array['obs'] = addslashes($_POST['observations']);
 				$array['barcode'] = addslashes($_POST['barcode']);
 				$array['purchase_date'] = date('Y-m-d H:i:s');
 				$array['expiration_date'] = addslashes($_POST['expiration_date']);
+				$array['trademark'] = addslashes($_POST['trademark']);
+				$array['packing'] = addslashes($_POST['packing']);
+				$array['price'] = addslashes($_POST['price']);
 				
 				$product = new products();
 				$return = $product->addProduct($array);
@@ -72,6 +85,17 @@
 			
 			$product = new products();
 			$return = $product->getProduct($barcode);
+			
+			echo json_encode($return);
+		}
+		
+		public function get_products() {
+			header('Content-type: text/json; charset=utf-8');
+			
+			$return = array();
+			
+			$product = new products();
+			$return = $product->getProducts();
 			
 			echo json_encode($return);
 		}

@@ -37,9 +37,10 @@ $(function () {
 			data: product,
 			success: function(response) {
 				if (response) {
-					$('#isRegistered').empty()
-									  .append('Produto cadastrado com sucesso!')
-									  .addClass('registered');
+					$('#isRegistered')
+						.empty()
+						.append('Produto cadastrado com sucesso!')
+						.addClass('registered');
 					$('.add_product').css('background-color', '#dff0d8');
 				}
 			}
@@ -85,90 +86,19 @@ function getProduct(barcode) {
 				ID: data.id,
 				PRODUCT_NAME: data.product_name,
 				QUANTITY: data.quantity,
-				CATEGORY: data.category,
+				CATEGORY: data.category_name,
 				PURCHASE_DATE: data.purchase_date,
 				EXPIRATION_DATE: data.expiration_date,
-				OBSERVATIONS: data.observations
+				TRADEMARK: data.trademark,
+				PACKING: data.packing,
+				PRICE: data.price
 			});
-			
-			console.log(product);
 			
 			var template = $('#product_info').html();
 			var html = Mustache.render(template, product[0]);
 			$('.add_product').append(html);
 		}
 	});
-}
-
-function mascaraData(val) {
-  var pass = val.value;
-  var expr = /[0123456789]/;
-
-  for (i = 0; i < pass.length; i++) {
-    // charAt -> retorna o caractere posicionado no índice especificado
-    var lchar = val.value.charAt(i);
-    var nchar = val.value.charAt(i + 1);
-
-    if (i == 0) {
-      // search -> retorna um valor inteiro, indicando a posição do inicio da primeira
-      // ocorrência de expReg dentro de instStr. Se nenhuma ocorrencia for encontrada o método retornara -1
-      // instStr.search(expReg);
-      if ((lchar.search(expr) != 0) || (lchar > 3)) {
-        val.value = "";
-      }
-
-    } else if (i == 1) {
-
-      if (lchar.search(expr) != 0) {
-        // substring(indice1,indice2)
-        // indice1, indice2 -> será usado para delimitar a string
-        var tst1 = val.value.substring(0, (i));
-        val.value = tst1;
-        continue;
-      }
-
-      if ((nchar != '/') && (nchar != '')) {
-        var tst1 = val.value.substring(0, (i) + 1);
-
-        if (nchar.search(expr) != 0)
-          var tst2 = val.value.substring(i + 2, pass.length);
-        else
-          var tst2 = val.value.substring(i + 1, pass.length);
-
-        val.value = tst1 + '/' + tst2;
-      }
-
-    } else if (i == 4) {
-
-      if (lchar.search(expr) != 0) {
-        var tst1 = val.value.substring(0, (i));
-        val.value = tst1;
-        continue;
-      }
-
-      if ((nchar != '/') && (nchar != '')) {
-        var tst1 = val.value.substring(0, (i) + 1);
-
-        if (nchar.search(expr) != 0)
-          var tst2 = val.value.substring(i + 2, pass.length);
-        else
-          var tst2 = val.value.substring(i + 1, pass.length);
-
-        val.value = tst1 + '/' + tst2;
-      }
-    }
-
-    if (i >= 6) {
-      if (lchar.search(expr) != 0) {
-        var tst1 = val.value.substring(0, (i));
-        val.value = tst1;
-      }
-    }
-  }
-
-  if (pass.length > 10)
-    val.value = val.value.substring(0, 10);
-  return true;
 }
 
 function productRegister(barcode) {
@@ -201,17 +131,29 @@ function productRegister(barcode) {
         '</div>'+
 		 '<div class="col-md-4 col-sm-4">'+
             '<label for="expiration_date">Data de validade</label>'+
-            '<input type="text" name="expiration_date" id="expiration_date" class="form-control" maxlength="10" onkeypress="mascaraData(this)" required>'+
+            '<input type="text" name="expiration_date" id="expiration_date" class="form-control" maxlength="7" required>'+
         '</div>'+
     '</div>'+
 '</div>'+
 '<div class="form-group">'+
-    '<div class="row">'+
-        '<div class="col-md-12 col-sm-12">'+
-            '<label for="observations">Observações</label>'+
-            '<textarea name="observations" id="observations" class="form-control"></textarea>'+
-        '</div>'+
-    '</div>'+
+	'<div class="row">'+
+		'<div class="col-md-6 col-sm-6">'+
+			'<label for="trademark">Marca do produto</label>'+
+			'<input type="text" name="trademark" id="trademark" class="form-control">'+
+		'</div>'+
+		'<div class="col-md-6 col-sm-6">'+
+			'<label for="packing">Embalagem</label>'+
+			'<input type="text" name="packing" id="packing" class="form-control">'+
+		'</div>'+
+	'</div>'+
+'</div>'+
+'<div class="form-group">'+
+	'<div class="row">'+
+		'<div class="col-md-6 col-sm-6">'+
+			'<label for="price">Preço</label>'+
+			'<input type="text" name="price" id="price" class="form-control">'+
+		'</div>'+
+	'</div>'+
 '</div>'+
 '<div class="form-group">'+
     '<div class="row">'+
@@ -222,4 +164,5 @@ function productRegister(barcode) {
 '</div>');
 	$('#isRegistered').addClass('not-registered');
 	$('.add_product').css('background-color', '#e4b9c0');
+	$('#expiration_date').mask('99/9999');
 }

@@ -1,4 +1,4 @@
-<h1><span class="glyphicon glyphicon-barcode"></span> Cadastrar <small>Produtos</small></h1>
+<h1><span class="glyphicon glyphicon-barcode"></span> Código de barras <small>Buscar produtos / Cadastrar novos produtos</small></h1>
 <div class="add_category">
 	<a href="<?php echo BASE_URL; ?>/products/category_register" class="button"><span class="glyphicon glyphicon-plus"></span> Adicionar categoria</a>
 </div>
@@ -20,8 +20,9 @@
 <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/products.js"></script>
 <script type="text/template" id="product_info">
 	<div class="product-info">
-		<h4>{{PRODUCT_NAME}}</h4><br>
-		<strong>Quantidade em estoque:</strong> {{QUANTITY}} ({{OBSERVATIONS}})<br>
+		<h4>{{PRODUCT_NAME}} ({{PACKING}})</h4><br>
+		<strong>Marca:</strong> {{TRADEMARK}}<br>
+		<strong>Quantidade em estoque:</strong> {{QUANTITY}}<br>
 		<strong>Categoria:</strong> {{CATEGORY}}<br>
 		<strong>Data da compra:</strong> {{PURCHASE_DATE}}<br>
 		<strong>Validade:</strong> {{EXPIRATION_DATE}}

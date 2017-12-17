@@ -74,6 +74,7 @@ body {
 	padding: 0px 20px 20px 20px
 }
 
+/* Adicionar categorias */
 .add_category {
 	margin-top: 50px;
 	margin-bottom: 50px;
@@ -94,6 +95,7 @@ body {
 	text-decoration: none;
 }
 
+/* Cadastrar produtos */
 .add_product {
 	border: 1px solid #000;
 	border-radius: 5px;

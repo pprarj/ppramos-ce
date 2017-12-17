@@ -19,7 +19,7 @@
 		}
 		
 		public function addProduct($product) {
-			$sql = $this->db->prepare("INSERT INTO products SET product_name = :product_name, category = :category, quantity = :quantity, purchase_date = :purchase_date, expiration_date = :expiration_date, barcode = :barcode, observations = :observations");
+			$sql = $this->db->prepare("INSERT INTO products SET product_name = :product_name, category = :category, quantity = :quantity, purchase_date = :purchase_date, expiration_date = :expiration_date, barcode = :barcode, trademark = :trademark, packing = :packing, price = :price");
 			
 			$sql->bindValue(":product_name", $product['product_name']);
 			$sql->bindValue(":category", $product['category']);
@@ -27,7 +27,9 @@
 			$sql->bindValue(":purchase_date", $product['purchase_date']);
 			$sql->bindValue(":expiration_date", $product['expiration_date']);
 			$sql->bindValue(":barcode", $product['barcode']);
-			$sql->bindValue(":observations", $product['obs']);
+			$sql->bindValue(":trademark", $product['trademark']);
+			$sql->bindValue(":packing", $product['packing']);
+			$sql->bindValue(":price", $product['price']);
 			
 			if ($sql->execute()) {
 				$result = true;
@@ -39,13 +41,28 @@
 		}
 		
 		public function getProduct($barcode) {
-			$sql = $this->db->prepare("SELECT * FROM products WHERE barcode = :barcode");
+			$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id WHERE barcode = :barcode");
 			$sql->bindValue(":barcode", $barcode);
 			$sql->execute();
 			
 			if ($sql->rowCount() > 0) {
 				$row = $sql->fetch();
 				$row['purchase_date'] = $this->data_padrao_br_numero($row['purchase_date']);
+				
+				return $row;
+			}
+		}
+		
+		public function getProducts() {
+			$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id");
+			$sql->execute();
+			
+			if ($sql->rowCount() > 0) {
+				$row = $sql->fetchAll();
+				
+				for ($i = 0; $i < count($row); $i++) {
+					$row[$i]['purchase_date'] = $this->data_padrao_br_numero($row[$i]['purchase_date']);
+				}
 				
 				return $row;
 			}

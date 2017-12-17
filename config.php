@@ -14,7 +14,7 @@
 		$config['dbuser'] = 'root';
 		$config['dbpass'] = '';
 	} else {
-		define('BASE_URL', 'http://localhost:8888/ppramos-ce');
+		define('BASE_URL', 'http://192.168.1.35:8888/ppramos-ce');
 		$config['environment'] = ENVIRONMENT;
 		/*$config['dbname'] = 'pprarj';
 		$config['host'] = 'localhost';

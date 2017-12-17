@@ -23,7 +23,7 @@
 		</form>
 		<div id="warning" class="alert alert-danger"></div>
 	</div>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		/* ============ LOGIN APP ============ */
@@ -42,7 +42,7 @@
 				if (explode[2] == 'localhost') {
 					var link = 'http://localhost/ppramos-ce';
 				} else {
-					var link = 'http://localhost:8888/ppramos-ce';
+					var link = 'http://192.168.1.35:8888/ppramos-ce';
 				}
 				// Fim do controle de ambiente
 
