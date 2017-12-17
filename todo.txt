@@ -18,6 +18,8 @@ Veja como o código é composto. Ele apresenta 13 dígitos que correspondem a qu
 
 * Dígito de controle: o último dígito.
 
+7894900531008
+
 *************
 BANCO DE DADOS
 *************
@@ -38,3 +40,52 @@ Usuarios:
 - ID
 - Nome
 - Senha
+
+*************
+SNIPPETS
+*************
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <label for="product_name">Nome do produto</label>
+            <input type="text" name="product_name" id="pruduct_name" class="form-control" placeholder="Nome do produto">
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <label for="category">Categoria</label>
+            <select name="category" id="category" class="form-control">
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <label for="stock_quantity">Quantidade em estoque</label>
+            <input type="text" name="stock_quantity" id="stock_quantity" class="form-control" placeholder="Exemplo: 3 pacotes">
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <label for="purchase_date">Data da compra</label>
+            <input type="text" name="purchase_date" id="purchase_date" class="form-control" readonly>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <label for="expiration_date">Data de validade</label>
+            <input type="text" name="expiration_date" id="expiration_date" class="form-control" maxlength="10" onkeypress="mascaraData(this)" required>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <label for="observations">Observações</label>
+            <textarea name="observations" id="observations" class="form-control"></textarea>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2 col-sm-2">
+            <button type="submit" class="btn btn-default">Cadastrar produto</button>
+        </div>
+    </div>
+</div>

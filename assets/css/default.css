@@ -11,23 +11,21 @@ body {
 
 /* ============ TOP ============ */
 
-.top-line {
-	min-height: 10px;
-	background-color: #002898;
-}
-
 .top {
 	text-align: right;
 	padding: 10px 10px 10px 0px;
-	border-bottom: 1px solid #DDD;
+	border-bottom: 1px solid #000F1E;
+	background-color: #000F1E;
+	color: #FFF;
 }
 
 .top a {
 	text-decoration: none;
+	color: #FFF;
 }
 
 .top a:hover {
-	color: #F00;
+	color: #009BFF;
 }
 
 /* ============ MID ============ */
@@ -40,7 +38,7 @@ body {
 /* ====== MENU ====== */
 
 .menu {
-	background-color: #CCC;
+	background-color: #000F1E;
 	width: 15%;
 	border-bottom-right-radius: 10px;
 	padding-bottom: 10px;
@@ -57,17 +55,69 @@ body {
 }
 
 .menu li:hover {
-	background-color: #AAA;
+	background-color: #009BFF;
 }
 
 .menu a {
-	color: #002898;
+	color: #FFF;
 	text-decoration: none;
+}
+
+.menu a:hover {
+	color: #000F1E;
 }
 
 /* ====== CONTENT ====== */
 
 .content {
-	padding: 10px;
 	width: 85%;
+	padding: 0px 20px 20px 20px
+}
+
+.add_category {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: none;
+}
+
+.button {
+	background-color: #000F1E;
+	color: #FFF;
+	border-radius: 50px;
+	width: 200px;
+	padding: 10px;
+	text-align: center;
+}
+
+.button:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.add_product {
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+#isRegistered {
+	padding-top: 33px;
+}
+
+.not-registered {
+	color: #a94442;
+}
+
+.registered {
+	color: #3c763d;
+}
+
+.product-info {
+	margin-top: 30px;
+}
+
+.product-info h4 {
+	margin-bottom: -10px;
+	font-weight: bold;
+	color: #3c763d;
 }

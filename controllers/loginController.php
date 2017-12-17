@@ -10,9 +10,9 @@
 		}
 
 		public function index() {
-			$dados = array();
+			$data = array();
 			
-			$this->loadView('login', $dados);
+			$this->loadView('login', $data);
 		}
 		
 		public function logout() {

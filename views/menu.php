@@ -1,5 +1,5 @@
 <ul>
-    <a href="<?php echo BASE_URL; ?>/"><li>Página Inicial</li></a>
-    <a href="<?php echo BASE_URL; ?>/produtos/cadastrar"><li>Cadastrar produtos</li></a>
-    <a href="<?php echo BASE_URL; ?>/produtos/listar"><li>Listar produtos em estoque</li></a>
+    <a href="<?php echo BASE_URL; ?>/"><li><span class="glyphicon glyphicon-blackboard"></span> Página Inicial</li></a>
+    <a href="<?php echo BASE_URL; ?>/products/register"><li><span class="glyphicon glyphicon-barcode"></span> Cadastrar produtos</li></a>
+    <a href="<?php echo BASE_URL; ?>/products/list"><li><span class="glyphicon glyphicon-shopping-cart"></span> Listar produtos em estoque</li></a>
 </ul>

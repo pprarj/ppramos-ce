@@ -10,14 +10,14 @@
 		}
 
 		public function index() {
-			$dados = array();
+			$data = array();
 			
 			$user = new users();
 			$user->setUser();
 
-			$dados['user'] = $user->getUser();
+			$data['user'] = $user->getUser();
 			
-			$this->loadTemplate('home', $dados);
+			$this->loadTemplate('home', $data);
 		}
 	}
 ?>
