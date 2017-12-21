@@ -25,7 +25,9 @@
 			
 			$user = new users();
 			$user->setUser();
-
+			
+			$categories = new categories();
+			$data['categories'] = $categories->getCategories();
 			$data['user'] = $user->getUser();
 			
 			$this->loadTemplate('products_list', $data);
@@ -89,13 +91,18 @@
 			echo json_encode($return);
 		}
 		
-		public function get_products() {
+		public function get_products($category = "") {
 			header('Content-type: text/json; charset=utf-8');
 			
 			$return = array();
 			
 			$product = new products();
-			$return = $product->getProducts();
+			
+			if ($category == "") {
+				$return = $product->getProducts();
+			} else {
+				$return = $product->getProducts($category);
+			}
 			
 			echo json_encode($return);
 		}

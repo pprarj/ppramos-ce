@@ -53,19 +53,26 @@
 			}
 		}
 		
-		public function getProducts() {
-			$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id");
-			$sql->execute();
+		public function getProducts($category = "") {
+			if ($category == "") {
+				$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id");
+				$sql->execute();
+			} else {
+				$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id WHERE products.category = :category");
+				$sql->bindValue(":category", $category);
+				$sql->execute();
+			}
 			
+			$row = array();
 			if ($sql->rowCount() > 0) {
 				$row = $sql->fetchAll();
-				
+
 				for ($i = 0; $i < count($row); $i++) {
 					$row[$i]['purchase_date'] = $this->data_padrao_br_numero($row[$i]['purchase_date']);
 				}
-				
-				return $row;
 			}
+			
+			return $row;
 		}
 		
 		private function data_padrao_br_numero($data) {

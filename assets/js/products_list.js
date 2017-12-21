@@ -1,6 +1,5 @@
 $(function() {
 	getCategories();
-	productsList();
 });
 
 function getCategories() {
@@ -13,22 +12,32 @@ function getCategories() {
 			
 			for (i = 0; i < data.length; i++) {
 				categories.push({
-					ID: data[i].id,
+					CATEGORY_ID: data[i].id,
 					CATEGORY_NAME: data[i].category_name
 				});
 				
-				/*var template = $('#categories_menu').html();
+				var template = $('#categories').html();
 				var html = Mustache.render(template, categories[i]);
-				$('.menu').append(html);*/
+				$('.products-filter > ul').append(html);
 			}
+			
+			$('.products-filter input').click(function(){
+				if ($(this).attr('checked') != "checked") {
+					$("#cat_" + $(this).attr('id')).toggleClass('products-filter-checked');
+					$("#panel_" + $(this).attr('id')).toggle();
+				} else {
+					$("#cat_" + $(this).attr('id')).toggleClass('products-filter-checked');
+					$("#panel_" + $(this).attr('id')).toggle();
+				}
+			});
 		}
 	});
 }
 
-function productsList() {
+function productsList(cat) {
 	$.ajax({
 		type: 'GET',
-		url: 'get_products',
+		url: 'get_products/' + cat,
 		dataType: 'json',
 		success: function(data) {
 			var products = [];
@@ -48,15 +57,20 @@ function productsList() {
 				});
 			}
 			
-			showProducts(products);
+			showProducts(products, cat);
 		}
 	});
 }
 
-function showProducts(products) {
-	for (i = 0; i < products.length; i++) {
-		var template = $('#product_table').html();
-		var html = Mustache.render(template, products[i]);
-		$('#product_list').append(html);
+function showProducts(products, cat) {
+	if (products.length != 0) {
+		for (i = 0; i < products.length; i++) {
+			var template = $('#product_table').html();
+			var html = Mustache.render(template, products[i]);
+			$('#product_list_' + cat).append(html);
+		}
+	} else {
+		$('#table_' + cat).hide();
+		$('#panel_' + cat).append('<p class="no-products">Ainda não há produtos cadastrados nessa categoria!</p>');
 	}
 }

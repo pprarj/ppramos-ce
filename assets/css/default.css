@@ -9,6 +9,11 @@ body {
 	background-color: #EEE;
 }
 
+h1 {
+	border-bottom: 1px solid #000F1E;
+	padding-bottom: 5px;
+}
+
 /* ============ TOP ============ */
 
 .top {
@@ -97,6 +102,7 @@ body {
 
 /* Cadastrar produtos */
 .add_product {
+	margin-top: 30px;
 	border: 1px solid #000;
 	border-radius: 5px;
 	padding: 10px;
@@ -122,4 +128,44 @@ body {
 	margin-bottom: -10px;
 	font-weight: bold;
 	color: #3c763d;
+}
+
+/* Lista de produtos */
+.products-filter {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	color: #FFF;
+}
+
+.products-filter ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.products-filter li {
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 15px;
+	background-color: #000F1E;
+	border-radius: 20px;
+}
+
+.products-filter p {
+	margin-top: 20px;
+}
+
+.products-filter-checked {
+	background-color: #009BFF !important;
+}
+
+.no-products {
+	text-align: center;
+	font-size: 16px;
+	font-style: italic;
+	color: #888;
+	padding-bottom: 20px;
 }
