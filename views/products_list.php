@@ -3,10 +3,13 @@
 	<ul></ul>
 </div>
 <?php for ($i = 0; $i < count($categories); $i++): ?>
-<div class="panel panel-primary" id="panel_<?php echo $categories[$i]['id']; ?>">
-	<div class="panel panel-heading"><span class="h4"><?php echo $categories[$i]['category_name']; ?></span></div>
-	<div class="panel-body">
-		<table class="table table-condensed" id="table_<?php echo $categories[$i]['id']; ?>">
+<div class="card" id="panel_<?php echo $categories[$i]['id']; ?>">
+	<div class="card-header bg-dark text-white"><a href="#card_<?php echo $categories[$i]['id']; ?>" data-toggle="collapse" data-parent="#panel_<?php echo $categories[$i]['id']; ?>"><h4 class="card-title"><span class="glyphicon glyphicon-minus" id="toggle_<?php echo $categories[$i]['id']; ?>"></span> <?php echo $categories[$i]['category_name']; ?></h4></a></div>
+	<div class="card-body collapse show" id="card_<?php echo $categories[$i]['id']; ?>">
+		<!-- TODO: fazer função que pegue tamanho do array do produto de cada categoria, verifique se há
+		conteúdo, e ao invés de mostrar que não há produtos cadastrados via javascript, fazer isso via
+		php -->
+		<table class="table table-sm" id="table_<?php echo $categories[$i]['id']; ?>">
 			<thead>
 				<tr>
 					<th>Nome</th>

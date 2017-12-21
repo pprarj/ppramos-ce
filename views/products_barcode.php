@@ -6,11 +6,11 @@
 	<div class="add_product">
 		<div class="form-group">
 			<div class="row">
-				<div class="col-md-2 col-sm-2">
+				<div class="col-md-3 col-sm-3">
 					<label for="barcode">Código de barras</label>
 					<input type="text" name="barcode" id="barcode" class="form-control" placeholder="Código de barras" autofocus>
 				</div>
-				<div class="col-md-2 col-sm-2">
+				<div class="col-md-3 col-sm-3">
 					<p id="isRegistered"></p>
 				</div>
 			</div>

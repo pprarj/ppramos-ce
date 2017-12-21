@@ -158,7 +158,7 @@ function productRegister(barcode) {
 '<div class="form-group">'+
     '<div class="row">'+
         '<div class="col-md-2 col-sm-2">'+
-            '<button type="submit" class="btn btn-default">Cadastrar produto</button>'+
+            '<button type="submit" class="btn btn-success">Cadastrar produto</button>'+
         '</div>'+
     '</div>'+
 '</div>');

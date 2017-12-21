@@ -9,7 +9,7 @@
 			}
 		}
 
-		public function register() {
+		public function barcode() {
 			$data = array();
 			
 			$user = new users();
@@ -17,7 +17,7 @@
 
 			$data['user'] = $user->getUser();
 			
-			$this->loadTemplate('products_register', $data);
+			$this->loadTemplate('products_barcode', $data);
 		}
 		
 		public function roster() {
@@ -105,6 +105,14 @@
 			}
 			
 			echo json_encode($return);
+		}
+
+		public function get_products_length() {
+			$return = array();
+			$products = new products();
+			$categories = new categories();
+
+			$return
 		}
 	}
 ?>
