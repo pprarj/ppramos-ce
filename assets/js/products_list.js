@@ -63,14 +63,9 @@ function productsList(cat) {
 }
 
 function showProducts(products, cat) {
-	if (products.length != 0) {
-		for (i = 0; i < products.length; i++) {
-			var template = $('#product_table').html();
-			var html = Mustache.render(template, products[i]);
-			$('#product_list_' + cat).append(html);
-		}
-	} else {
-		$('#table_' + cat).hide();
-		$('#panel_' + cat).append('<p class="no-products">Ainda não há produtos cadastrados nessa categoria!</p>');
+	for (i = 0; i < products.length; i++) {
+		var template = $('#product_table').html();
+		var html = Mustache.render(template, products[i]);
+		$('#product_list_' + cat).append(html);
 	}
 }

@@ -27,8 +27,13 @@
 			$user->setUser();
 			
 			$categories = new categories();
+			$products = new products();
 			$data['categories'] = $categories->getCategories();
 			$data['user'] = $user->getUser();
+			
+			for ($i = 1; $i <= count($data['categories']); $i++) {
+				$data['productsLength'][$i] = $products->getProductLength($i);
+			}
 			
 			$this->loadTemplate('products_list', $data);
 		}
@@ -105,14 +110,6 @@
 			}
 			
 			echo json_encode($return);
-		}
-
-		public function get_products_length() {
-			$return = array();
-			$products = new products();
-			$categories = new categories();
-
-			$return
 		}
 	}
 ?>

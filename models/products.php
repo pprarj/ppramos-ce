@@ -75,6 +75,19 @@
 			return $row;
 		}
 		
+		public function getProductLength($id) {
+			$sql = $this->db->prepare("SELECT COUNT(*) as c FROM products WHERE category = :category");
+			$sql->bindValue(":category", $id);
+			$sql->execute();
+			
+			$array = array();
+			if ($sql->rowCount() > 0) {
+				$array = $sql->fetch();
+			}
+			
+			return $array['c'];
+		}
+		
 		private function data_padrao_br_numero($data) {
 			$nd = explode('-', $data);
 			$hora = explode(' ', $nd[2]);
