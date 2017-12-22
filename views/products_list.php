@@ -35,21 +35,74 @@
 	</div>
 </div>
 <?php endfor; ?>
+<div class="container">
+	<!-- The Modal -->
+	<div class="modal fade" id="product_modal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+			</div>
+		</div>
+	</div>
+</div>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/products_list.js"></script>
 
 <script type="text/template" id="categories">
 	<li id="cat_{{CATEGORY_ID}}" class="products-filter-checked"><label class="checkbox-inline"><input type="checkbox" id="{{CATEGORY_ID}}" checked> {{CATEGORY_NAME}}</label></li>
 </script>
 <script type="text/template" id="product_table">
-	<tr>
+	<tr data-modal="true" id="{{BARCODE}}">
 		<td>{{PRODUCT_NAME}}</td>
-		<td>{{TRADEMARK}}</td>
-		<td>{{PACKING}}</td>
-		<td>{{QUANTITY}}</td>
-		<td>{{CATEGORY}}</td>
-		<td>{{PURCHASE_DATE}}</td>
-		<td>{{EXPIRATION_DATE}}</td>
-		<td>{{BARCODE}}</td>
-		<td>{{PRICE}}</td>
+		<td class="text-center">{{TRADEMARK}}</td>
+		<td class="text-center">{{PACKING}}</td>
+		<td class="text-center">{{QUANTITY}}</td>
+		<td class="text-center">{{CATEGORY}}</td>
+		<td class="text-center">{{PURCHASE_DATE}}</td>
+		<td class="text-center">{{EXPIRATION_DATE}}</td>
+		<td class="text-center">{{BARCODE}}</td>
+		<td class="text-center">{{PRICE}}</td>
 	</tr>
+</script>
+<script type="text/template" id="modal_product">
+	<!-- Modal Header -->
+	<div class="modal-header">
+		<h4 class="modal-title">{{PRODUCT_NAME}} - {{TRADEMARK}} ({{PACKING}})</h4>
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	</div>
+
+	<!-- Modal body -->
+	<div class="modal-body">
+		<form method="POST" id="product_update">
+			<input type="hidden" name="barcode" value="{{BARCODE}}">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-4">
+						<label for="quantity">Alterar quantidade em estoque</label>
+						<input type="text" name="quantity" id="quantity" value="{{QUANTITY}}" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-4">
+						<label for="expiration_date">Alterar data de validade</label>
+						<input type="text" name="expiration_date" id="expiration_date" value="{{EXPIRATION_DATE}}" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-4">
+						<label for="price">Alterar preço da última compra</label>
+						<input type="text" name="price" id="price" value="{{PRICE}}" class="form-control">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- Modal footer -->
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" id="product_update_save">Salvar</button>
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+	</div>
 </script>

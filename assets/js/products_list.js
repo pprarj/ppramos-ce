@@ -34,6 +34,53 @@ function getCategories() {
 	});
 }
 
+function openModal(barcode) {
+	$.ajax({
+		type: 'GET',
+		url: 'get_product/' + barcode,
+		dataType: 'json',
+		success: function(data) {
+			var product = [];
+
+			product.push({
+				ID: data.id,
+				PRODUCT_NAME: data.product_name,
+				QUANTITY: data.quantity,
+				CATEGORY: data.category_name,
+				PURCHASE_DATE: data.purchase_date,
+				EXPIRATION_DATE: data.expiration_date,
+				BARCODE: data.barcode,
+				TRADEMARK: data.trademark,
+				PACKING: data.packing,
+				PRICE: data.price
+			});
+			
+			var template = $('#modal_product').html();
+			var html = Mustache.render(template, product[0]);
+			$('.modal-content').append(html);
+
+			$("#product_modal").modal('show');
+			$('#product_update_save').click(function() {
+				var product = $('#product_update').serialize();
+
+				$.ajax({
+					type: 'POST',
+					url: 'update',
+					data: product,
+					success: function(response) {
+						if (response) {
+							$("#product_modal").modal('hide');
+							location.reload();
+						} else {
+							alert('Erro: não foi possível fazer as alterações no momento. Tente novamente mais tarde!');
+						}
+					}
+				});
+			});
+		}
+	});
+}
+
 function productsList(cat) {
 	$.ajax({
 		type: 'GET',
@@ -68,4 +115,10 @@ function showProducts(products, cat) {
 		var html = Mustache.render(template, products[i]);
 		$('#product_list_' + cat).append(html);
 	}
+
+	$('tr').click(function() {
+		if ($(this).attr('data-modal') == "true") {
+			openModal($(this).attr('id'));
+		}
+	});
 }

@@ -65,13 +65,30 @@
 			
 			$row = array();
 			if ($sql->rowCount() > 0) {
-				$row = $sql->fetchAll();
+				$row = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 				for ($i = 0; $i < count($row); $i++) {
 					$row[$i]['purchase_date'] = $this->data_padrao_br_numero($row[$i]['purchase_date']);
 				}
 			}
 			
+			return $row;
+		}
+
+		public function getProductsByCategory($category) {
+			$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id WHERE products.category = :category");
+			$sql->bindValue(":category", $category);
+			$sql->execute();
+
+			$row = array();
+			if ($sql->rowCount() > 0) {
+				$row = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+				for ($i = 0; $i < count($row); $i++) {
+					$row[$i]['purchase_date'] = $this->data_padrao_br_numero($row[$i]['purchase_date']);
+				}
+			}
+
 			return $row;
 		}
 		
@@ -86,6 +103,20 @@
 			}
 			
 			return $array['c'];
+		}
+
+		public function update($data) {
+			$sql = $this->db->prepare("UPDATE products SET quantity = :quantity, expiration_date = :expiration_date, price = :price WHERE barcode = :barcode");
+			$sql->bindValue(":quantity", $data['quantity']);
+			$sql->bindValue(":expiration_date", $data['expiration_date']);
+			$sql->bindValue(":price", $data['price']);
+			$sql->bindValue(":barcode", $data['barcode']);
+
+			if ($sql->execute()) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 		
 		private function data_padrao_br_numero($data) {
