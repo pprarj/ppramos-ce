@@ -39,6 +39,17 @@
 			$this->loadTemplate('products_list', $data);
 		}
 		
+		public function quick_reduction() {
+			$data = array();
+			
+			$user = new users();
+			$user->setUser();
+			
+			$data['user'] = $user->getUser();
+			
+			$this->loadTemplate('products_quick_reduction', $data);
+		}
+		
 		public function add() {
 			header('Content-type: text/json; charset=utf-8');
 			
@@ -111,6 +122,17 @@
 			}
 			
 			echo json_encode($return);
+		}
+		
+		public function reduct($barcode) {
+			header('Content-type: text/json; charset=utf-8');
+			
+			$result = array();
+			
+			$product = new products();
+			$result = $product->reduct($barcode);
+			
+			echo json_encode($result);
 		}
 
 		public function update() {

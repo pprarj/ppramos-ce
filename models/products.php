@@ -7,10 +7,10 @@
 			
 			$array = array();
 			if ($sql->rowCount() > 0) {
-				$row = $sql->fetch();
+				$row = $sql->fetch(PDO::FETCH_ASSOC);
 				
 				$array['check'] = true;
-				$array['product'] = $row[0];
+				$array['product'] = $row;
 			} else {
 				$array['check'] = false;
 			}
@@ -46,7 +46,7 @@
 			$sql->execute();
 			
 			if ($sql->rowCount() > 0) {
-				$row = $sql->fetch();
+				$row = $sql->fetch(PDO::FETCH_ASSOC);
 				$row['purchase_date'] = $this->data_padrao_br_numero($row['purchase_date']);
 				
 				return $row;
@@ -55,10 +55,10 @@
 		
 		public function getProducts($category = "") {
 			if ($category == "") {
-				$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id");
+				$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id ORDER BY products.product_name ASC");
 				$sql->execute();
 			} else {
-				$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id WHERE products.category = :category");
+				$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id WHERE products.category = :category ORDER BY products.product_name ASC");
 				$sql->bindValue(":category", $category);
 				$sql->execute();
 			}
@@ -103,6 +103,40 @@
 			}
 			
 			return $array['c'];
+		}
+		
+		public function reduct($barcode) {
+			$product_bc = $this->getProduct($barcode);
+			$quantity_bc = $product_bc['quantity'];
+			$quantity = explode(" ", $product_bc['quantity']);
+			
+			if ($quantity[0] > 0) {
+				$quantity_ac = intval($quantity[0] - 1);
+				
+				if($quantity_ac == 1 && substr($quantity[1], -1) == "s") {
+					$quantity_ac .= " " . substr($quantity[1], 0, -1);
+				} elseif ($quantity_ac == 0 && substr($quantity[1], -1) != "s") {
+					$quantity_ac .= " " . $quantity[1] . "s";
+				} else {
+					$quantity_ac .= " " . $quantity[1];
+				}
+			} else if ($quantity[0] == 0) {
+				$quantity_ac = 0 . " " . $quantity[1];
+			}
+			
+			$sql = $this->db->prepare("UPDATE products SET quantity = :quantity WHERE barcode = :barcode");
+			$sql->bindValue(':quantity', $quantity_ac);
+			$sql->bindValue(':barcode', $barcode);
+			
+			if ($sql->execute()) {
+				$result = $this->getProduct($barcode);
+				$result['quantity_bc'] = $quantity_bc;
+				$result['verify'] = true;
+			} else {
+				$result['verify'] = false;
+			}
+			
+			return $result;
 		}
 
 		public function update($data) {

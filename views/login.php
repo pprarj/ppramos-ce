@@ -42,7 +42,7 @@
 				if (explode[2] == 'localhost') {
 					var link = 'http://localhost/ppramos-ce';
 				} else {
-					var link = 'http://192.168.1.35:8888/ppramos-ce';
+					var link = explode[0] + '//' + explode[2] + '/ppramos-ce';
 				}
 				// Fim do controle de ambiente
 

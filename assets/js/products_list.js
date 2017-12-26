@@ -57,7 +57,9 @@ function openModal(barcode) {
 			
 			var template = $('#modal_product').html();
 			var html = Mustache.render(template, product[0]);
-			$('.modal-content').append(html);
+			$(".modal-content")
+				.empty()
+				.append(html);
 
 			$("#product_modal").modal('show');
 			$('#product_update_save').click(function() {
@@ -116,7 +118,7 @@ function showProducts(products, cat) {
 		$('#product_list_' + cat).append(html);
 	}
 
-	$('tr').click(function() {
+	$('tr').off('click').click(function() {
 		if ($(this).attr('data-modal') == "true") {
 			openModal($(this).attr('id'));
 		}

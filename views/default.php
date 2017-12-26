@@ -11,11 +11,18 @@
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/popper.min.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery.maskedinput.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/script.js"></script>
 </head>
 
 <body>
 	<section id="top">
 		<div class="top">
+			<div class="menu-mobile">
+				<img src="<?php echo BASE_URL; ?>/assets/images/menu.png">
+				<div class="menu-dropdown">
+					<?php include 'menu.php'; ?>
+				</div>
+			</div>
 			<div class="login-info">
 				Olá <?php echo $viewData['user']['name']; ?>! ( <a href="<?php echo BASE_URL; ?>/login/logout"><span class="glyphicon glyphicon-log-out"></span> Sair</a> )
 			</div>

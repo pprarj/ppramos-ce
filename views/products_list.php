@@ -11,14 +11,14 @@
 			<thead>
 				<tr>
 					<th>Nome</th>
-					<th>Marca</th>
-					<th>Embalagem</th>
-					<th>Quantidade em estoque</th>
-					<th>Categoria</th>
-					<th>Data da compra</th>
-					<th>Data de validade</th>
-					<th>Código de barras</th>
-					<th>Preço</th>
+					<th class="text-center">Marca</th>
+					<th class="text-center">Embalagem</th>
+					<th class="text-center">Quantidade em estoque</th>
+					<th class="text-center mobile-no-display">Categoria</th>
+					<th class="text-center mobile-no-display">Data da compra</th>
+					<th class="text-center">Data de validade</th>
+					<th class="text-center mobile-no-display">Código de barras</th>
+					<th class="text-center">Preço</th>
 				</tr>
 			</thead>
 			<tbody id="product_list_<?php echo $categories[$i]['id']; ?>">
@@ -35,7 +35,7 @@
 	</div>
 </div>
 <?php endfor; ?>
-<div class="container">
+<div class="container-fluid">
 	<!-- The Modal -->
 	<div class="modal fade" id="product_modal">
 		<div class="modal-dialog modal-lg">
@@ -55,10 +55,10 @@
 		<td class="text-center">{{TRADEMARK}}</td>
 		<td class="text-center">{{PACKING}}</td>
 		<td class="text-center">{{QUANTITY}}</td>
-		<td class="text-center">{{CATEGORY}}</td>
-		<td class="text-center">{{PURCHASE_DATE}}</td>
+		<td class="text-center mobile-no-display">{{CATEGORY}}</td>
+		<td class="text-center mobile-no-display">{{PURCHASE_DATE}}</td>
 		<td class="text-center">{{EXPIRATION_DATE}}</td>
-		<td class="text-center">{{BARCODE}}</td>
+		<td class="text-center mobile-no-display">{{BARCODE}}</td>
 		<td class="text-center">{{PRICE}}</td>
 	</tr>
 </script>
@@ -75,7 +75,7 @@
 			<input type="hidden" name="barcode" value="{{BARCODE}}">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-md-4 col-sm-4">
 						<label for="quantity">Alterar quantidade em estoque</label>
 						<input type="text" name="quantity" id="quantity" value="{{QUANTITY}}" class="form-control">
 					</div>
@@ -83,7 +83,7 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-md-4 col-sm-4">
 						<label for="expiration_date">Alterar data de validade</label>
 						<input type="text" name="expiration_date" id="expiration_date" value="{{EXPIRATION_DATE}}" class="form-control">
 					</div>
@@ -91,7 +91,7 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-md-4 col-sm-4">
 						<label for="price">Alterar preço da última compra</label>
 						<input type="text" name="price" id="price" value="{{PRICE}}" class="form-control">
 					</div>
@@ -102,7 +102,7 @@
 
 	<!-- Modal footer -->
 	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary" id="product_update_save">Salvar</button>
+		<button type="button" class="btn btn-success" id="product_update_save">Salvar</button>
 		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 	</div>
 </script>

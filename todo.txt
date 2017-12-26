@@ -21,6 +21,18 @@ Veja como o código é composto. Ele apresenta 13 dígitos que correspondem a qu
 7894900531008
 
 *************
+TO DO
+*************
+
+> Zerar a data de validade quando o produto for zerado no estoque;
+> Se o produto estiver zerado no estoque e ele for adicionado, mudar a data de compra;
+> Incluir campo "Desmarcar todos" na aba "Lista de produtos";
+> Incluir paginação na lista de produtos;
+> Quando o card de categoria for encolhido, mudar o ícone de menos para mais;
+> Fazer a parte de relatórios avançados;
+> Fazer o app para mobile;
+
+*************
 BANCO DE DADOS
 *************
 
