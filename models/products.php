@@ -140,7 +140,15 @@
 		}
 
 		public function update($data) {
-			$sql = $this->db->prepare("UPDATE products SET quantity = :quantity, expiration_date = :expiration_date, price = :price WHERE barcode = :barcode");
+			$product = $this->getProduct($data['barcode']);
+
+			if ($product['quantity'] == 0) {
+				$sql = $this->db->prepare("UPDATE products SET quantity = :quantity, purchase_date = :purchase_date, expiration_date = :expiration_date, price = :price WHERE barcode = :barcode");
+				$sql->bindValue(":purchase_date", date('Y-m-d H:i:s'));
+			} else {
+				$sql = $this->db->prepare("UPDATE products SET quantity = :quantity, expiration_date = :expiration_date, price = :price WHERE barcode = :barcode");
+			}
+
 			$sql->bindValue(":quantity", $data['quantity']);
 			$sql->bindValue(":expiration_date", $data['expiration_date']);
 			$sql->bindValue(":price", $data['price']);
