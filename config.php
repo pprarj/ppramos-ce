@@ -16,9 +16,9 @@
 	} else {
 		define('BASE_URL', 'http://www.pprarj.com.br/ppramos-ce');
 		$config['environment'] = ENVIRONMENT;
-		$config['dbname'] = 'pprarj';
-		$config['host'] = 'localhost';
-		$config['dbuser'] = 'pprarjbd';
-		$config['dbpass'] = 'SegReqNao01';
+		$config['dbname'] = '*********';
+		$config['host'] = '*********';
+		$config['dbuser'] = '*********';
+		$config['dbpass'] = '*********';
 	}
 ?>

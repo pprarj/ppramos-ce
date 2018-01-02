@@ -23,12 +23,18 @@ Veja como o código é composto. Ele apresenta 13 dígitos que correspondem a qu
 *************
 TO DO
 *************
+Web:
 
 > Incluir campo "Desmarcar todos" na aba "Lista de produtos";
 > Incluir paginação na lista de produtos;
 > Quando o card de categoria for encolhido, mudar o ícone de menos para mais;
 > Fazer a parte de relatórios avançados;
 > Fazer o app para mobile;
+
+App:
+
+> Arrumar o login (está digitando, no android, muito ruim, varias letras repetidas);
+> Mostrar mensagem quando não tiver produto cadastrado;
 
 *************
 BANCO DE DADOS
