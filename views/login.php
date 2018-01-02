@@ -18,13 +18,14 @@
 				<input type="password" name="password" id="password" class="form-control" placeholder="Digite a senha" required>
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-default">Entrar</button>
+				<button type="submit" class="btn btn-primary">Entrar</button>
 			</div>
 		</form>
 		<div id="warning" class="alert alert-danger"></div>
 	</div>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/popper.min.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		/* ============ LOGIN APP ============ */
 
@@ -42,9 +43,11 @@
 				if (explode[2] == 'localhost') {
 					var link = 'http://localhost/ppramos-ce';
 				} else {
-					var link = explode[0] + '//' + explode[2] + '/ppramos-ce';
+					var link = 'http://www.pprarj.com.br/ppramos-ce';
 				}
 				// Fim do controle de ambiente
+				
+				console.log(name);
 
 				$.ajax({
 					type: 'POST',

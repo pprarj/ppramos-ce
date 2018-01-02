@@ -14,15 +14,11 @@
 		$config['dbuser'] = 'root';
 		$config['dbpass'] = '';
 	} else {
-		define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/ppramos-ce');
+		define('BASE_URL', 'http://www.pprarj.com.br/ppramos-ce');
 		$config['environment'] = ENVIRONMENT;
-		/*$config['dbname'] = 'pprarj';
+		$config['dbname'] = 'pprarj';
 		$config['host'] = 'localhost';
 		$config['dbuser'] = 'pprarjbd';
-		$config['dbpass'] = 'SegReqNao01';*/
-		$config['dbname'] = 'ppramos-ce';
-		$config['host'] = 'localhost';
-		$config['dbuser'] = 'root';
-		$config['dbpass'] = '';
+		$config['dbpass'] = 'SegReqNao01';
 	}
 ?>

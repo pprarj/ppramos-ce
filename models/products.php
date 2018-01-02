@@ -1,7 +1,7 @@
 <?php
 	class products extends model {
 		public function checkProduct($barcode) {
-			$sql = $this->db->prepare("SELECT * FROM products WHERE barcode = :barcode");
+			$sql = $this->db->prepare("SELECT * FROM ppramos_ce_products WHERE barcode = :barcode");
 			$sql->bindValue(":barcode", $barcode);
 			$sql->execute();
 			
@@ -19,7 +19,7 @@
 		}
 		
 		public function addProduct($product) {
-			$sql = $this->db->prepare("INSERT INTO products SET product_name = :product_name, category = :category, quantity = :quantity, purchase_date = :purchase_date, expiration_date = :expiration_date, barcode = :barcode, trademark = :trademark, packing = :packing, price = :price");
+			$sql = $this->db->prepare("INSERT INTO ppramos_ce_products SET product_name = :product_name, category = :category, quantity = :quantity, purchase_date = :purchase_date, expiration_date = :expiration_date, barcode = :barcode, trademark = :trademark, packing = :packing, price = :price");
 			
 			$sql->bindValue(":product_name", $product['product_name']);
 			$sql->bindValue(":category", $product['category']);
@@ -41,7 +41,7 @@
 		}
 		
 		public function getProduct($barcode) {
-			$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id WHERE barcode = :barcode");
+			$sql = $this->db->prepare("SELECT ppramos_ce_products.*, ppramos_ce_categories.category_name FROM ppramos_ce_products LEFT JOIN ppramos_ce_categories ON ppramos_ce_products.category = ppramos_ce_categories.id WHERE barcode = :barcode");
 			$sql->bindValue(":barcode", $barcode);
 			$sql->execute();
 			
@@ -55,10 +55,10 @@
 		
 		public function getProducts($category = "") {
 			if ($category == "") {
-				$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id ORDER BY products.product_name ASC");
+				$sql = $this->db->prepare("SELECT ppramos_ce_products.*, ppramos_ce_categories.category_name FROM ppramos_ce_products LEFT JOIN ppramos_ce_categories ON ppramos_ce_products.category = ppramos_ce_categories.id ORDER BY ppramos_ce_products.product_name ASC");
 				$sql->execute();
 			} else {
-				$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id WHERE products.category = :category ORDER BY products.product_name ASC");
+				$sql = $this->db->prepare("SELECT ppramos_ce_products.*, ppramos_ce_categories.category_name FROM ppramos_ce_products LEFT JOIN ppramos_ce_categories ON ppramos_ce_products.category = ppramos_ce_categories.id WHERE ppramos_ce_products.category = :category ORDER BY ppramos_ce_products.product_name ASC");
 				$sql->bindValue(":category", $category);
 				$sql->execute();
 			}
@@ -76,7 +76,7 @@
 		}
 
 		public function getProductsByCategory($category) {
-			$sql = $this->db->prepare("SELECT products.*, categories.category_name FROM products LEFT JOIN categories ON products.category = categories.id WHERE products.category = :category");
+			$sql = $this->db->prepare("SELECT ppramos_ce_products.*, ppramos_ce_categories.category_name FROM ppramos_ce_products LEFT JOIN ppramos_ce_categories ON ppramos_ce_products.category = ppramos_ce_categories.id WHERE ppramos_ce_products.category = :category");
 			$sql->bindValue(":category", $category);
 			$sql->execute();
 
@@ -93,7 +93,7 @@
 		}
 		
 		public function getProductLength($id) {
-			$sql = $this->db->prepare("SELECT COUNT(*) as c FROM products WHERE category = :category");
+			$sql = $this->db->prepare("SELECT COUNT(*) as c FROM ppramos_ce_products WHERE category = :category");
 			$sql->bindValue(":category", $id);
 			$sql->execute();
 			
@@ -124,7 +124,7 @@
 				$quantity_ac = 0 . " " . $quantity[1];
 			}
 			
-			$sql = $this->db->prepare("UPDATE products SET quantity = :quantity WHERE barcode = :barcode");
+			$sql = $this->db->prepare("UPDATE ppramos_ce_products SET quantity = :quantity WHERE barcode = :barcode");
 			$sql->bindValue(':quantity', $quantity_ac);
 			$sql->bindValue(':barcode', $barcode);
 			
@@ -143,10 +143,10 @@
 			$product = $this->getProduct($data['barcode']);
 
 			if ($product['quantity'] == 0) {
-				$sql = $this->db->prepare("UPDATE products SET quantity = :quantity, purchase_date = :purchase_date, expiration_date = :expiration_date, price = :price WHERE barcode = :barcode");
+				$sql = $this->db->prepare("UPDATE ppramos_ce_products SET quantity = :quantity, purchase_date = :purchase_date, expiration_date = :expiration_date, price = :price WHERE barcode = :barcode");
 				$sql->bindValue(":purchase_date", date('Y-m-d H:i:s'));
 			} else {
-				$sql = $this->db->prepare("UPDATE products SET quantity = :quantity, expiration_date = :expiration_date, price = :price WHERE barcode = :barcode");
+				$sql = $this->db->prepare("UPDATE ppramos_ce_products SET quantity = :quantity, expiration_date = :expiration_date, price = :price WHERE barcode = :barcode");
 			}
 
 			$sql->bindValue(":quantity", $data['quantity']);

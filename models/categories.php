@@ -1,7 +1,7 @@
 <?php
 	class categories extends model {
 		public function getCategories() {
-			$sql = $this->db->prepare("SELECT * FROM categories");
+			$sql = $this->db->prepare("SELECT * FROM ppramos_ce_categories");
 			$sql->execute();
 			
 			$array = array();

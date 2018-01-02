@@ -28,7 +28,7 @@
 					} else {
 						array_shift($url);
 						array_shift($url);
-						array_shift($url);
+						//array_shift($url);
 					}
 				} else {
 					$url = explode('index.php', $url);
