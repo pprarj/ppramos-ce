@@ -16,10 +16,10 @@
 	} else {
 		define('BASE_URL', 'http://192.168.1.35:8888/ppramos-ce');
 		$config['environment'] = ENVIRONMENT;
-		/*$config['dbname'] = 'pprarj';
-		$config['host'] = 'localhost';
-		$config['dbuser'] = 'pprarjbd';
-		$config['dbpass'] = 'SegReqNao01';*/
+		/*$config['dbname'] = '*********';
+		$config['host'] = '*********';
+		$config['dbuser'] = '*********';
+		$config['dbpass'] = '*********';*/
 		$config['dbname'] = 'ppramos-ce';
 		$config['host'] = 'localhost';
 		$config['dbuser'] = 'root';
