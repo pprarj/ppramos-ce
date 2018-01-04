@@ -11,15 +11,7 @@
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/popper.min.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery.maskedinput.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/dataTables.bootstrap4.min.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/script.js"></script>
-	<script type="text/javascript">
-		$.extend(true, $.fn.dataTable.defaults, {
-			"ordering": false,
-			"lengthChange": false
-		});
-	</script>
 </head>
 
 <body>

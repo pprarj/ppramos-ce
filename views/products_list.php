@@ -8,7 +8,7 @@
 	<div class="card-header bg-dark text-white"><a href="#card_<?php echo $categories[$i]['id']; ?>" data-toggle="collapse" data-parent="#panel_<?php echo $categories[$i]['id']; ?>"><h4 class="card-title"><span class="glyphicon glyphicon-minus" id="toggle_<?php echo $categories[$i]['id']; ?>"></span> <?php echo $categories[$i]['category_name']; ?></h4></a></div>
 	<div class="card-body collapse show" id="card_<?php echo $categories[$i]['id']; ?>">
 		<?php if ($productsLength[$categories[$i]['id']] != 0): ?>
-		<table class="table table-sm" id="table_<?php echo $categories[$i]['id']; ?>">
+		<table class="table table-md" id="table_<?php echo $categories[$i]['id']; ?>">
 			<thead>
 				<tr>
 					<th>Nome</th>
@@ -30,11 +30,6 @@
 			</script>
 			</tbody>
 		</table>
-		<script type="text/javascript">
-			$(function() {
-				$('#table_<?php echo $categories[$i]['id']; ?>').DataTable();
-			});
-		</script>
 		<?php else: ?>
 		<p class="no-products">Ainda não há produtos cadastrados nessa categoria!</p>
 		<?php endif; ?>

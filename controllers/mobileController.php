@@ -44,7 +44,7 @@
 			if ($method == 'GET') {
 				$result = $product->getProduct($barcode);
 			} elseif ($method == 'DELETE') {
-				
+				$result = $product->reduct($barcode);
 			}
 			
 			echo json_encode($result);
