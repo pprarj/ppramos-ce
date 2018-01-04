@@ -6,7 +6,7 @@
 			
 			$array = array();
 			if ($sql->rowCount() > 0) {
-				$array = $sql->fetchAll();
+				$array = $sql->fetchAll(PDO::FETCH_ASSOC);
 			}
 			
 			return $array;

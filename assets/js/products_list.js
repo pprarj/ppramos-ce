@@ -2,6 +2,24 @@ $(function() {
 	getCategories();
 });
 
+function marcardesmarcar(){
+    $(".marcar").each(
+        function() {
+            if ($(this).prop("checked")) {
+				$('#all').text('Marcar todas');
+				$(this).prop("checked", false);
+				$("#cat_" + $(this).attr('id')).toggleClass('products-filter-checked');
+				$("#panel_" + $(this).attr('id')).toggle();
+            } else {
+				$('#all').text('Desmarcar todas');
+				$(this).prop("checked", true);
+				$("#cat_" + $(this).attr('id')).toggleClass('products-filter-checked');
+				$("#panel_" + $(this).attr('id')).toggle();
+            }
+        }
+	);
+}
+
 function getCategories() {
 	$.ajax({
 		type: 'GET',

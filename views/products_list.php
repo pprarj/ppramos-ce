@@ -1,6 +1,7 @@
 <h1><span class="glyphicon glyphicon-shopping-cart"></span> Listar <small>Produtos em estoque</small></h1>
 <div class="products-filter">
 	<ul></ul>
+	<p class="text-center"><button class='btn btn-primary' type='button' id='all' onclick='marcardesmarcar();'>Desmarcar todas</button></p>
 </div>
 <?php for ($i = 0; $i < count($categories); $i++): ?>
 <div class="card" id="panel_<?php echo $categories[$i]['id']; ?>">
@@ -29,6 +30,11 @@
 			</script>
 			</tbody>
 		</table>
+		<script type="text/javascript">
+			$(function() {
+				$('#table_<?php echo $categories[$i]['id']; ?>').DataTable();
+			});
+		</script>
 		<?php else: ?>
 		<p class="no-products">Ainda não há produtos cadastrados nessa categoria!</p>
 		<?php endif; ?>
@@ -47,7 +53,7 @@
 <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/products_list.js"></script>
 
 <script type="text/template" id="categories">
-	<li id="cat_{{CATEGORY_ID}}" class="products-filter-checked"><label class="checkbox-inline"><input type="checkbox" id="{{CATEGORY_ID}}" checked> {{CATEGORY_NAME}}</label></li>
+	<li id="cat_{{CATEGORY_ID}}" class="products-filter-checked"><label class="checkbox-inline"><input type="checkbox" class="marcar" name="check[]" id="{{CATEGORY_ID}}" checked> {{CATEGORY_NAME}}</label></li>
 </script>
 <script type="text/template" id="product_table">
 	<tr data-modal="true" id="{{BARCODE}}">
