@@ -14,11 +14,6 @@
 		$config['dbuser'] = 'root';
 		$config['dbpass'] = '';
 	} else {
-		define('BASE_URL', 'http://www.pprarj.com.br/ppramos-ce');
-		$config['environment'] = ENVIRONMENT;
-		$config['dbname'] = 'pprar310_ppramos_ce';
-		$config['host'] = 'localhost';
-		$config['dbuser'] = 'pprar310_pprarj';
-		$config['dbpass'] = 'SegReqNao01';
+		// retirado
 	}
 ?>
